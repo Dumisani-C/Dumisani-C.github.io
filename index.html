@@ -1,9 +1,569 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dumisani Chikomo | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Dumisani Chikomo, software engineer and computer science student focused on practical product and systems development."
+    />
+    <style>
+      :root {
+        --bg: #0d0f12;
+        --bg-2: #12161a;
+        --panel: rgba(255, 255, 255, 0.02);
+        --panel-strong: #151a1f;
+        --text: #f6f2eb;
+        --muted: #a8adb3;
+        --line: rgba(255, 255, 255, 0.09);
+        --accent: #e4c98d;
+        --accent-soft: rgba(228, 201, 141, 0.12);
+        --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      }
 
-<body>
-  <h1>Dumisani Chikomo</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://media.licdn.com/dms/image/v2/D4E03AQGnJPhJQTokGA/profile-displayphoto-crop_800_800/B4EZxQCw9EH4AM-/0/1770869433147?e=1788998400&v=beta&t=X6w5mC1KDQvVu-AhxE4b3lZJC59Ad2v4-OoyReCYJdI" />
-</body>
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
 
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(228, 201, 141, 0.08), transparent 30%),
+          linear-gradient(180deg, var(--bg), var(--bg-2));
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      a {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      a:hover { text-decoration: underline; }
+
+      .container {
+        width: min(1040px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid var(--line);
+        background: rgba(13, 15, 18, 0.82);
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 70px;
+      }
+
+      .brand {
+        font-size: 0.75rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .nav {
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      main {
+        padding: 56px 0 80px;
+      }
+
+      .hero {
+        padding: 24px 0 28px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.45fr 0.9fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+        color: var(--accent);
+        font-size: 0.73rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3.2rem, 6vw, 6.4rem);
+        line-height: 0.9;
+        letter-spacing: -0.07em;
+      }
+
+      .summary {
+        margin-top: 22px;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+        margin-top: 26px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .dot {
+        color: var(--accent);
+      }
+
+      .profile-card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+
+      .photo-wrap {
+        position: relative;
+        height: 390px;
+        border-radius: 22px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 30% 28%, rgba(228, 201, 141, 0.28), transparent 18%),
+          linear-gradient(160deg, #f1d9a3 0%, #7c817a 25%, #1f262b 55%, #0e1216 100%);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .photo-wrap img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.9) contrast(1.08);
+      }
+
+      .photo-wrap::before,
+      .photo-wrap::after {
+        display: none;
+      }
+
+      .photo-tag {
+        display: none;
+      }
+
+      section {
+        border-top: 1px solid var(--line);
+        margin-top: 32px;
+        padding-top: 30px;
+      }
+
+      h2 {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      p, li {
+        color: var(--muted);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-copy {
+        font-size: 1.05rem;
+        max-width: none;
+        width: 100%;
+      }
+
+      .quick-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 10px 18px;
+      }
+
+      .quick-list li {
+        position: relative;
+        padding-left: 14px;
+        color: var(--text);
+      }
+
+      .quick-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .job {
+        padding-top: 18px;
+      }
+
+      .job + .job {
+        border-top: 1px solid var(--line);
+        margin-top: 20px;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .job-title {
+        font-size: 1.08rem;
+        color: var(--text);
+      }
+
+      .job-meta {
+        color: var(--muted);
+        margin-top: 3px;
+      }
+
+      .job-date {
+        color: var(--accent);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .job ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+
+      .job li {
+        margin-bottom: 7px;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(180px, 1fr));
+        gap: 18px;
+      }
+
+      .skill-box {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 18px 18px 14px;
+      }
+
+      .skill-box h3 {
+        margin: 0 0 10px;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .skill-box ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .skill-box li {
+        margin: 6px 0;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 18px;
+      }
+
+      .project {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 18px 18px 16px;
+      }
+
+      .project-year {
+        color: var(--accent);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .project h3 {
+        margin: 0 0 10px;
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+
+      .project ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .project li {
+        margin-bottom: 7px;
+      }
+
+      .education-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .school {
+        font-size: 1.08rem;
+        color: var(--text);
+      }
+
+      @media (max-width: 820px) {
+        .hero-grid,
+        .about-grid,
+        .skills-grid,
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar-inner {
+          flex-direction: column;
+          justify-content: center;
+          gap: 10px;
+          padding: 16px 0;
+        }
+
+        .nav {
+          justify-content: center;
+        }
+
+        .photo-wrap {
+          height: 320px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">Dumisani Chikomo</div>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Software Engineer</div>
+            <h1>Hello, I’m Dumisani.</h1>
+            <p class="summary">
+              I build useful, reliable software and thoughtful digital systems, bridging product thinking,
+              software engineering, and practical problem solving for real-world work.
+            </p>
+
+            <div class="contact-row">
+              <a href="mailto:chikomodumisan@gmail.com">chikomodumisan@gmail.com</a>
+              <a href="tel:+18597567875">(859) 756-7875</a>
+              <a href="https://www.linkedin.com/in/dumisani-chikomo-5a730718a" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://github.com/Dumisani-C" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+        <div class="about-grid">
+          <div class="about-copy">
+            I’m a computer science student and software engineer focused on building practical tools,
+            clean digital experiences, and systems that help people work more effectively. I enjoy turning
+            complex problems into straightforward products, balancing technical execution with a thoughtful,
+            user-first approach. When I’m free, I like to watch football, and I’m a Manchester United fan.
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title">Software Engineering Intern</div>
+              <div class="job-meta">Credit Karma</div>
+            </div>
+            <div class="job-date">May 2026 – Jul 2026</div>
+          </div>
+          <ul>
+            <li>Designed and built a two-part AI-augmented PR review system (Claude Code, GitHub MCP, CircleCI, Internal AI Gateway): a weekly miner that extracts recurring feedback patterns from historical PRs into reusable team memory, and a CI-triggered reviewer that checks every new PR before human reviewers look at it, saving reviewer time by surfacing issues upfront.</li>
+            <li>Validated the problem via 12 engineer interviews before writing code, then seeded the miner on 400+ historical PRs to bootstrap the initial pattern set.</li>
+            <li>Reached 80% accuracy on held-out validation; deployed to production and actively used by the Credit Karma Intelligence team across core repos to support, not replace, human review.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title">Information Technology Support Specialist</div>
+              <div class="job-meta">Berea College</div>
+            </div>
+            <div class="job-date">Aug 2025 – Present</div>
+          </div>
+          <ul>
+            <li>Coordinated with a 20+ member IT team to manage 50+ weekly tickets, ensuring prioritized task resolution and timely communication with 1,600+ students and staff.</li>
+            <li>Performed 30+ virus removals and security patches monthly, reducing repeat infections by 25% and improving campus cybersecurity.</li>
+            <li>Implemented structured workflows and authored troubleshooting documentation, boosting onboarding efficiency for new IT staff.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title">Software Engineering Intern</div>
+              <div class="job-meta">The Djerence</div>
+            </div>
+            <div class="job-date">Jul 2025 – Aug 2025</div>
+          </div>
+          <ul>
+            <li>Optimized 15+ MySQL queries and indexing strategies, cutting backend latency by 40% while collaborating in an Agile team environment.</li>
+            <li>Migrated and refactored 10+ database tables, coordinating with backend developers to strengthen schema consistency and scalability.</li>
+            <li>Built relational data models and supported backend APIs with Python, Flask, and MySQL for a predictive weight-management platform serving 1,000+ users.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title">Machine Learning &amp; HPC Researcher</div>
+              <div class="job-meta">NSF/TACC Advanced Computing Student Challenge (ACSC)</div>
+            </div>
+            <div class="job-date">May 2025 – Jul 2025</div>
+          </div>
+          <ul>
+            <li>Selected as 1 of 25 students nationwide for the NSF/TACC ACSC to conduct data-intensive student wellness research on the Stampede3 supercomputer.</li>
+            <li>Analyzed 1,100+ student records across 20+ psychological, academic, social, and health variables; evaluated 6 machine learning models using 5-fold cross-validation to identify key predictors of student stress.</li>
+            <li>Built and tuned a 3-class stress classification pipeline in Python using scikit-learn, pandas, and NumPy, achieving 88.6% accuracy and 88.6% F1-score; presented findings at PEARC25 to academic and industry audiences.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3>Languages</h3>
+            <ul>
+              <li>Java</li>
+              <li>Python</li>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>C/C++</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>Frameworks</h3>
+            <ul>
+              <li>React</li>
+              <li>Node.js</li>
+              <li>Express</li>
+              <li>Spring Boot</li>
+              <li>Bootstrap</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>Tools</h3>
+            <ul>
+              <li>Git/GitHub</li>
+              <li>Docker</li>
+              <li>CI/CD</li>
+              <li>REST APIs</li>
+              <li>Agile</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Featured Work</h2>
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-year">GitHub</div>
+            <h3><a href="https://github.com/Dumisani-C/class-life-balance-optimizer" target="_blank" rel="noreferrer">Class-Life Balance Optimizer</a></h3>
+            <ul>
+              <li>AI-powered weekly schedule planner for students using Gemini, Django, and React.</li>
+              <li>Built to help students plan study time, balance responsibilities, and improve focus.</li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div class="project-year">GitHub</div>
+            <h3><a href="https://github.com/Dumisani-C/advanced_payment_and_support_system" target="_blank" rel="noreferrer">Advanced Payment & Support System</a></h3>
+            <ul>
+              <li>Full-stack web app for tenant–landlord communication, online payments, and support workflows.</li>
+              <li>Designed to simplify recurring operations and improve the user experience for both sides.</li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div class="project-year">GitHub</div>
+            <h3><a href="https://github.com/Dumisani-C/Study-Companion" target="_blank" rel="noreferrer">Study Companion</a></h3>
+            <ul>
+              <li>Intelligent study assistant powered by a local LLM for planning, progress tracking, and adaptive learning.</li>
+              <li>Built as an agentic AI system for routines, reflection, and personalized study support.</li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div class="project-year">GitHub</div>
+            <h3><a href="https://github.com/Dumisani-C/LoadBalancer" target="_blank" rel="noreferrer">LoadBalancer</a></h3>
+            <ul>
+              <li>System design project focused on resilience, observability, and efficient request distribution.</li>
+              <li>Designed to improve reliability and visibility in a distributed software environment.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="education-wrap">
+          <div>
+            <div class="school">Berea College</div>
+            <div>B.S. in Computer Science</div>
+          </div>
+          <div class="job-date">Dec 2027</div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
