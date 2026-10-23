@@ -1,8 +1,19 @@
 ---
 layout: post
-title: "BP01: Open Source Reflection"
+title: Open Source, From the Outside In
 date: 2026-10-22
 description: Reflecting on open source as a user, student, and contributor.
 ---
+For most of my life, I used open-source software without knowing it. Python, Linux, and Git were just there, built by strangers I would never meet. As a user, I took that for granted. Now I see it differently: open source lets anyone learn from real, working code, whatever their background or budget. Before I understood how software was built, I was already depending on people who chose to share their work freely.
 
-Delete this text and write your post here.
+CSC 426 changed how I see that. In T02, our whole class edited the same upstream file, and I spent more time untangling merge conflicts than writing my actual change. When many people can touch the same code, coordination becomes the work itself.
+
+Then I tried to contribute for real, and I started slowly. Setting up BCSR took much longer than I expected. The database credentials didn’t work, I didn’t have admin rights on my college machine, and my branch had fallen 26 commits behind upstream. Open source is open in principle, but in practice it rewards people who already have time, access, and context.
+
+My first real contribution was a Code of Conduct (issue #110). I researched common open-source codes, started from the Contributor Covenant, and then rebuilt it around the Berea CS Department’s own code. Two reviewers went through it line by line. They caught things I had missed, like a “confidential issue” option that GitHub doesn’t offer and principle numbers that didn’t exist in our document. Today I presented it to the class, and the most important feedback was to add an AI policy on how contributors may use AI tools. I hadn’t considered that, but it matters. AI now shapes how many of us write code, and a project needs clear expectations about honesty and credit. That is open source working as intended: many eyes improving one piece of work.
+
+But many eyes only help when people are actually looking. Heartbleed (2014) lived in OpenSSL, which secured much of the web while a tiny, underfunded team maintained it. In 2024, an attacker spent about two years earning a tired maintainer’s trust before slipping a backdoor into xz utils. The code model didn’t fail in either case. The labor model did. Companies profit from infrastructure they don’t pay to maintain, which treats volunteers as a means to an end.
+
+So my answer is yes: open source is an effective model for critical infrastructure, and its flaws come from neglect, not openness. The xz backdoor was caught because the code could be inspected, while closed software hides its problems until damage is done. Openness is necessary, but it isn’t enough. Those who depend on open source most have a duty to fund and support the people who keep it running.
+
+As for my progress, I have completed**** 3 story points, all from the Code of Conduct, which is now merged. I expected it to be a 1-point task because it was a single file, but the research and review rounds made it closer to 3. My total is low mostly because environment setup consumed my first weeks. My scope also shifted when we moved into exploring open-source communities. In this second part of the semester I asked Dr. Jan to contribute to Runestone, but she advised that its main issues were too advanced and suggested a Runestone textbook instead. She offered to tag me on issues in her Security book, and I’m waiting to be added so I can start. Meanwhile, I’m working on two more BCSR issues. Issue #71 is a zoom bug I can’t yet reproduce locally, so I’m asking Dr. Heggen for guidance. Issue #69 adds a divisions sidebar to the Courses and Archive pages. I expect my next update to look very different.
