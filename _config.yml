@@ -1,0 +1,6 @@
+title: Dumisani Chikomo
+description: Software engineer and computer science student.
+permalink: /blog/:title/
+markdown: kramdown
+exclude:
+  - .pages.yml

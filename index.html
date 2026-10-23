@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -326,6 +328,32 @@
         margin-bottom: 7px;
       }
 
+      .blog-entry {
+        display: grid;
+        grid-template-columns: minmax(150px, 0.35fr) 1fr;
+        gap: 24px;
+        padding: 20px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .blog-meta {
+        color: var(--accent);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .blog-entry h3 {
+        margin: 0 0 8px;
+        color: var(--text);
+        font-size: 1.12rem;
+      }
+
+      .blog-entry p {
+        margin: 0;
+        max-width: 680px;
+      }
+
       .education-wrap {
         display: flex;
         justify-content: space-between;
@@ -343,7 +371,8 @@
         .hero-grid,
         .about-grid,
         .skills-grid,
-        .project-grid {
+        .project-grid,
+        .blog-entry {
           grid-template-columns: 1fr;
         }
 
@@ -372,6 +401,7 @@
           <a href="#about">About</a>
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
+          <a href="#blog">Blog</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -558,6 +588,20 @@
             </ul>
           </article>
         </div>
+      </section>
+
+      <section id="blog">
+        <h2>Blog</h2>
+                {% for post in site.posts limit:3 %}
+        <article class="blog-entry">
+          <div class="blog-meta">{{ post.date | date: "%B %-d, %Y" }}</div>
+          <div>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.description }}</p>
+          </div>
+        </article>
+        {% endfor %}
+        <p><a href="blog/">See all posts →</a></p>
       </section>
 
       <section id="education">

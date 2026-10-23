@@ -1,0 +1,20 @@
+---
+layout: blog
+title: Blog
+description: Blog posts by Dumisani Chikomo on open source and software engineering.
+---
+<div class="eyebrow">Blog</div>
+<h1>Notes on open source &amp; software</h1>
+<p class="intro">Reflections from CSC 426 and my work contributing to open-source projects.</p>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li class="post-card">
+    <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+  </li>
+  {% else %}
+  <li class="post-card"><p>No posts yet.</p></li>
+  {% endfor %}
+</ul>
